@@ -1,0 +1,28 @@
+---
+title: "sitrep template"
+author: "Dirk"
+date: "3/23/2018"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Report
+
+
+```{r, echo = FALSE, results='asis'}
+for(x in components()) {
+  if (x$type == "epicurve") {
+    cat("\n")
+    print(x$compute())
+    cat("\n")
+  } else {
+    cat("\n")
+    cat(input[[paste0("report_text", x$id)]])
+    cat("\n")
+  }
+}
+```
+
